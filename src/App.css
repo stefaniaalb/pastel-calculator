@@ -2,39 +2,50 @@
   text-align: center;
 }
 .App-header {
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
   align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
+  display: flex;
   color: white;
+  flex-direction: column;
+  font-size: calc(10px + 2vmin);
+  justify-content: center;
+  min-height: 100vh;
 }
 
 .button-wrapper {
-  display: grid;
-  grid-template: repeat(5, minmax(0, 1fr)) / repeat(5, minmax(0, 1fr));
-  grid-gap: 10px;
   align-items: center;
+  display: grid;
+  grid-template: repeat(6, minmax(0, 1fr)) / repeat(5, minmax(0, 1fr));
+  grid-gap: 10px;
 }
 
 .plus-button {
+  background-color: white;
+  border-radius: 100px;
+  color: gray;
+  font-weight: 400;
   grid-column: 4;
   grid-row: 5 / 7;
   height: 100%;
-  border-radius: 100px;
   padding: 0px;
-  background-color: white;
-  color: gray;
 }
 
 .zero-button {
+  background-color: white;
+  border-radius: 100px;
+  color: gray;
+  font-weight: 400;
   grid-column: 1 / 3;
   grid-row: 6;
   width: 100%;
-  border-radius: 100px;
-  background-color: white;
-  color: gray;
+  height: 42.8px;
+}
+
+.plus-button :hover {
+  background-color: #EBEFFF;
+}
+
+.zero-button :hover {
+  background-color: #EBEFFF;
 }
 
 
