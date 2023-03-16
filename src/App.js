@@ -2,7 +2,7 @@ import './App.css';
 import { Box, Button, createStyles, Paper, Text } from '@mantine/core';
 import { useState } from 'react';
 
-const useStyles = createStyles((theme, _params, getRef) => ({
+const useStyles = createStyles((theme) => ({
   buttons: {
     backgroundColor: '#FDFFFC',
     borderRadius: '100px',
@@ -13,23 +13,23 @@ const useStyles = createStyles((theme, _params, getRef) => ({
     fontSize: '15px',
     fontWeight: '400',
     ":hover": {
-      backgroundColor: '#EBEFFF' 
+      backgroundColor: '#EBEFFF'
     },
+  },
 
-    result: {
-      fontFamily: 'Gill Sans',
-      color: 'gray.2'
+  result: {
+    color: 'gray.2'
 
-    },
+  },
 
-    result_display: {
-      borderRadius: theme.radius.md,
-
-
-    }
-    
-    
-    
+  result_display: {
+    //p="xs" align="right"
+    height: '60px',
+    width: '250px',
+    overflow: 'hidden',
+    borderRadius: theme.radius.md,
+    padding: theme.spacing.xs,
+    textAlign: 'right'
   }
 }));
 
@@ -42,9 +42,9 @@ function App() {
   const [result, setResult] = useState('0');
 
   function handleNumber(number) {
-     
+
     if (!operation) {
-       const num = parseInt(`${num1}${number}`, 10);
+      const num = parseInt(`${num1}${number}`, 10);
       setNum1(num);
       console.log("i'm number one: ", num);
       setDisplay(num);
@@ -56,7 +56,7 @@ function App() {
       console.log("i'm number two: ", num);
       setDisplay(num);
     }
-    
+
   }
 
   function handleClear() {
@@ -65,9 +65,9 @@ function App() {
     setNum2(0);
     setResult(0);
     setOperation(null);
-    
-  } 
-  
+
+  }
+
   function handleOff() {
     //que no se modifique el height
     setDisplay(' ')
@@ -82,29 +82,29 @@ function App() {
   function handleResult() {
     if (operation === '+') {
       console.log("i'm adding ", num1, " + ", num2);
-      const result  = num1 + num2;
-      setResult(result);  
+      const result = num1 + num2;
+      setResult(result);
       setDisplay(result);
       console.log(result)
     }
     else if (operation === '-') {
       console.log("i'm substracting ", num1, " - ", num2);
-      const result  = num1 - num2;
-      setResult(result);  
+      const result = num1 - num2;
+      setResult(result);
       setDisplay(result);
       console.log(result)
     }
-    else if(operation === '*') {
+    else if (operation === '*') {
       console.log("i'm multiplying ", num1, " by ", num2);
-      const result  = num1 * num2;
-      setResult(result);  
+      const result = num1 * num2;
+      setResult(result);
       setDisplay(result);
       console.log(result)
     }
-    else if(operation === '/') {
+    else if (operation === '/') {
       console.log("i'm multiplying ", num1, " by ", num2);
-      const result  = num1 / num2;
-      setResult(result);  
+      const result = num1 / num2;
+      setResult(result);
       setDisplay(result);
       console.log(result)
     }
@@ -119,55 +119,55 @@ function App() {
       <header className="App-header">
         <Paper p="md" bg="indigo.3" radius="lg">
           <Text fz="xs" c="white" tt="uppercase" mb="md" align='left'>Tofu's Calculator</Text>
-          <Paper p="xs" align="right" className={classes.result_display}>
+          <Paper className={classes.result_display}>
             <Text className={classes.result} >{display}</Text>
           </Paper>
 
-            {/* Button size 42.8px */}
-          <Box className="button-wrapper" my="lg"  w={254} h={306.8}>
+          {/* Button size 42.8px */}
+          <Box className="button-wrapper" my="lg" w={254} h={306.8}>
             <Button className={classes.buttons} onClick={() => handleOff()}>
               OFF
             </Button>
-            <Button  className={classes.buttons}>
+            <Button className={classes.buttons}>
               MU
             </Button>
-            <Button  className={classes.buttons}>
+            <Button className={classes.buttons}>
               GT
             </Button>
-            <Button  className={classes.buttons}>
+            <Button className={classes.buttons}>
               ON
             </Button>
-            <Button  className={classes.buttons} onClick={() => handleClear()}>
+            <Button className={classes.buttons} onClick={() => handleClear()}>
               AC
             </Button>
-            <Button   className={classes.buttons}>
+            <Button className={classes.buttons}>
               MRC
             </Button>
-            <Button  className={classes.buttons}>
+            <Button className={classes.buttons}>
               M-
             </Button>
-            <Button  className={classes.buttons}>
+            <Button className={classes.buttons}>
               M+
             </Button>
-            <Button   className={classes.buttons}>
+            <Button className={classes.buttons}>
               xd
             </Button>
-            <Button  className={classes.buttons}>
+            <Button className={classes.buttons}>
               +/-
             </Button>
-            <Button  className={classes.buttons} onClick={() => handleNumber(7)}>
+            <Button className={classes.buttons} onClick={() => handleNumber(7)}>
               7
             </Button>
-            <Button  className={classes.buttons} onClick={() => handleNumber(8)}>
+            <Button className={classes.buttons} onClick={() => handleNumber(8)}>
               8
             </Button>
-            <Button  className={classes.buttons} onClick={() => handleNumber(9)}>
+            <Button className={classes.buttons} onClick={() => handleNumber(9)}>
               9
             </Button>
-            <Button  className={classes.buttons}>
+            <Button className={classes.buttons}>
               %
             </Button>
-            <Button  className={classes.buttons}>
+            <Button className={classes.buttons}>
               √
             </Button>
             <Button className={classes.buttons} onClick={() => handleNumber(4)}>
@@ -200,13 +200,13 @@ function App() {
             <Button className={classes.buttons} onClick={() => handleOperation("-")}>
               -
             </Button>
-            <Button  className="zero-button" onClick={() => handleNumber(0)} >
+            <Button className="zero-button" onClick={() => handleNumber(0)} >
               0
             </Button>
-            <Button  className={classes.buttons}>
+            <Button className={classes.buttons}>
               .
             </Button>
-            <Button  className={classes.buttons} onClick={() => handleResult()}>
+            <Button className={classes.buttons} onClick={() => handleResult()}>
               =
             </Button>
           </Box>
