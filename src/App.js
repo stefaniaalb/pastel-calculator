@@ -40,13 +40,11 @@ function App() {
   const [num2, setNum2] = useState(null);
   const [operation, setOperation] = useState('');
   const [result, setResult] = useState('0');
-  //const [switcher, setSwitcher] = useState(false);
 
   function handleNumber(number) {
      
     if (!operation) {
        const num = parseInt(`${num1}${number}`, 10);
-       console.log("" + num1 + number);
       setNum1(num);
       console.log("i'm number one: ", num);
       setDisplay(num);
@@ -67,7 +65,6 @@ function App() {
     setNum2(0);
     setResult(0);
     setOperation(null);
-    //setSwitcher(false);
     
   } 
   
@@ -78,7 +75,6 @@ function App() {
   }
 
   function handleOperation(chosen_operation) {
-    //setSwitcher(true);
     setOperation(chosen_operation);
     setDisplay(chosen_operation);
   }
@@ -91,6 +87,29 @@ function App() {
       setDisplay(result);
       console.log(result)
     }
+    else if (operation === '-') {
+      console.log("i'm substracting ", num1, " - ", num2);
+      const result  = num1 - num2;
+      setResult(result);  
+      setDisplay(result);
+      console.log(result)
+    }
+    else if(operation === '*') {
+      console.log("i'm multiplying ", num1, " by ", num2);
+      const result  = num1 * num2;
+      setResult(result);  
+      setDisplay(result);
+      console.log(result)
+    }
+    else if(operation === '/') {
+      console.log("i'm multiplying ", num1, " by ", num2);
+      const result  = num1 / num2;
+      setResult(result);  
+      setDisplay(result);
+      console.log(result)
+    }
+    setNum1(0);
+    setNum2(0);
     setOperation(null);
   }
 
@@ -160,10 +179,10 @@ function App() {
             <Button className={classes.buttons} onClick={() => handleNumber(6)}>
               6
             </Button>
-            <Button className={classes.buttons}>
-              X
+            <Button className={classes.buttons} onClick={() => handleOperation("*")}>
+              x
             </Button>
-            <Button className={classes.buttons} >
+            <Button className={classes.buttons} onClick={() => handleOperation("/")}>
               ÷
             </Button>
             <Button className={classes.buttons} onClick={() => handleNumber(1)}>
@@ -178,7 +197,7 @@ function App() {
             <Button className="plus-button" onClick={() => handleOperation("+")}>
               +
             </Button>
-            <Button className={classes.buttons} >
+            <Button className={classes.buttons} onClick={() => handleOperation("-")}>
               -
             </Button>
             <Button  className="zero-button" onClick={() => handleNumber(0)} >
