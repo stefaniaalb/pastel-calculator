@@ -3,6 +3,14 @@ import { Box, Button, createStyles, Paper, Text } from '@mantine/core';
 import { useState } from 'react';
 
 const useStyles = createStyles((theme) => ({
+  calculator: {
+    alignItems: 'center',
+    backgroundColor: theme.colors.indigo[3],
+    borderRadius: theme.radius.lg,
+    display: 'flex',
+    flexDirection: 'column',
+    padding: theme.spacing.md,
+  },
   buttons: {
     backgroundColor: '#FDFFFC',
     borderRadius: '100px',
@@ -13,59 +21,55 @@ const useStyles = createStyles((theme) => ({
     fontSize: '15px',
     fontWeight: '400',
     ":hover": {
-      backgroundColor: '#EBEFFF'
+      backgroundColor: '#EBEFFF',
     },
   },
 
   result: {
-    color: 'gray.2'
+    color: 'gray.2',
 
   },
 
   result_display: {
-    //p="xs" align="right"
-    height: '60px',
-    width: '250px',
-    overflow: 'hidden',
     borderRadius: theme.radius.md,
+    height: '60px',
+    overflow: 'hidden',
     padding: theme.spacing.xs,
-    textAlign: 'right'
+    textAlign: 'right',
+    width: '250px',
   }
 }));
 
 function App() {
   const { classes } = useStyles();
   const [display, setDisplay] = useState('0');
-  const [num1, setNum1] = useState(null);
-  const [num2, setNum2] = useState(null);
+  const [num1, setNum1] = useState(0);
+  const [num2, setNum2] = useState(0);
   const [operation, setOperation] = useState('');
   const [result, setResult] = useState('0');
 
   function handleNumber(number) {
-
     if (!operation) {
       const num = parseInt(`${num1}${number}`, 10);
       setNum1(num);
-      console.log("i'm number one: ", num);
+      console.log("i'm num1: ", num);
       setDisplay(num);
     }
     else {
       const num = parseInt(`${num2}${number}`, 10);
       setNum2(num);
       setDisplay(num);
-      console.log("i'm number two: ", num);
+      console.log("i'm num2: ", num);
       setDisplay(num);
     }
-
   }
 
   function handleClear() {
     setDisplay('0');
     setNum1(0);
     setNum2(0);
-    setResult(0);
+    setResult(null);
     setOperation(null);
-
   }
 
   function handleOff() {
@@ -74,7 +78,23 @@ function App() {
     //desactivar los botones
   }
 
+  function handleTempResult(temp_result) {
+    console.log('is this a temp result? huh ', temp_result)
+    setNum1(temp_result);
+    setNum2(0);
+    //setDisplay(temp_result);
+    setOperation(null);
+    
+  }  
+    
+
   function handleOperation(chosen_operation) {
+    const temp_result = num1 + num2;
+    if (operation) {
+      console.log('this is a temp result = ', temp_result)
+      handleTempResult(temp_result);
+      
+    } 
     setOperation(chosen_operation);
     setDisplay(chosen_operation);
   }
@@ -117,7 +137,7 @@ function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <Paper p="md" bg="indigo.3" radius="lg">
+        <Paper className={classes.calculator}>
           <Text fz="xs" c="white" tt="uppercase" mb="md" align='left'>Tofu's Calculator</Text>
           <Paper className={classes.result_display}>
             <Text className={classes.result} >{display}</Text>

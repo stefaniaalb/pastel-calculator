@@ -9,6 +9,9 @@
   font-size: calc(10px + 2vmin);
   justify-content: center;
   min-height: 100vh;
+  -moz-text-size-adjust: none;
+  -webkit-text-size-adjust: none;
+  text-size-adjust: none;
 }
 
 .button-wrapper {
