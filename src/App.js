@@ -47,19 +47,20 @@ function App() {
   const [num2, setNum2] = useState(0);
   const [operation, setOperation] = useState('');
   const [result, setResult] = useState('0');
+  const [state, setState] = useState(true);
 
   function handleNumber(number) {
     if (!operation) {
       const num = parseInt(`${num1}${number}`, 10);
       setNum1(num);
-      console.log("i'm num1: ", num);
+      //console.log("i'm num1: ", num);
       setDisplay(num);
     }
     else {
       const num = parseInt(`${num2}${number}`, 10);
       setNum2(num);
       setDisplay(num);
-      console.log("i'm num2: ", num);
+      //console.log("i'm num2: ", num);
       setDisplay(num);
     }
   }
@@ -72,17 +73,14 @@ function App() {
     setOperation(null);
   }
 
-  function handleOff() {
-    //que no se modifique el height
+  function handleOff() {    
     setDisplay(' ')
-    //desactivar los botones
   }
 
   function handleTempResult(temp_result) {
-    console.log('is this a temp result? huh ', temp_result)
+    //console.log('is this a temp result? huh ', temp_result)
     setNum1(temp_result);
     setNum2(0);
-    //setDisplay(temp_result);
     setOperation(null);
     
   }  
@@ -99,36 +97,41 @@ function App() {
     setDisplay(chosen_operation);
   }
 
+  console.log("I'm num1: ", num1, ". I'm num2: ", num2, ". I'm operation: ", operation, ". I'm result: ", result)
+
   function handleResult() {
     if (operation === '+') {
       console.log("i'm adding ", num1, " + ", num2);
       const result = num1 + num2;
       setResult(result);
       setDisplay(result);
-      console.log(result)
+      console.log(result);
+      setNum1(result);
     }
     else if (operation === '-') {
       console.log("i'm substracting ", num1, " - ", num2);
       const result = num1 - num2;
       setResult(result);
       setDisplay(result);
-      console.log(result)
+      console.log(result);
+      setNum1(result);
     }
     else if (operation === '*') {
       console.log("i'm multiplying ", num1, " by ", num2);
       const result = num1 * num2;
       setResult(result);
       setDisplay(result);
-      console.log(result)
+      console.log(result);
+      setNum1(result);
     }
     else if (operation === '/') {
       console.log("i'm multiplying ", num1, " by ", num2);
       const result = num1 / num2;
       setResult(result);
       setDisplay(result);
-      console.log(result)
+      console.log(result);
+      setNum1(result);
     }
-    setNum1(0);
     setNum2(0);
     setOperation(null);
   }
