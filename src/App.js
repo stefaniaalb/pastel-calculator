@@ -151,31 +151,31 @@ function App() {
             <Button className={classes.buttons} onClick={() => handleOff()}>
               OFF
             </Button>
-            <Button className={classes.buttons}>
+            <Button className={classes.buttons} disabled>
               MU
             </Button>
-            <Button className={classes.buttons}>
+            <Button className={classes.buttons} disabled>
               GT
             </Button>
-            <Button className={classes.buttons}>
+            <Button className={classes.buttons} disabled>
               ON
             </Button>
             <Button className={classes.buttons} onClick={() => handleClear()}>
               AC
             </Button>
-            <Button className={classes.buttons}>
+            <Button className={classes.buttons} disabled>
               MRC
             </Button>
-            <Button className={classes.buttons}>
+            <Button className={classes.buttons} disabled>
               M-
             </Button>
-            <Button className={classes.buttons}>
+            <Button className={classes.buttons} disabled>
               M+
             </Button>
-            <Button className={classes.buttons}>
+            <Button className={classes.buttons} disabled>
               xd
             </Button>
-            <Button className={classes.buttons}>
+            <Button className={classes.buttons} disabled>
               +/-
             </Button>
             <Button className={classes.buttons} onClick={() => handleNumber(7)}>
@@ -187,10 +187,10 @@ function App() {
             <Button className={classes.buttons} onClick={() => handleNumber(9)}>
               9
             </Button>
-            <Button className={classes.buttons}>
+            <Button className={classes.buttons} disabled>
               %
             </Button>
-            <Button className={classes.buttons}>
+            <Button className={classes.buttons} disabled>
               √
             </Button>
             <Button className={classes.buttons} onClick={() => handleNumber(4)}>
@@ -226,7 +226,7 @@ function App() {
             <Button className="zero-button" onClick={() => handleNumber(0)} >
               0
             </Button>
-            <Button className={classes.buttons}>
+            <Button className={classes.buttons} onClick={() => handleNumber(".")}>
               .
             </Button>
             <Button className={classes.buttons} onClick={() => handleResult()}>
